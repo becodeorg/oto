@@ -1,0 +1,17 @@
+*~
+._*
+.DS_Store
+
+# package directories
+.npmrc
+node_modules
+
+# project dev files
+.eslintcache
+env/*.json
+env/*.yml
+.env
+
+# build targets
+bin
+
