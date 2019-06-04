@@ -18,9 +18,37 @@ In a world full of PWA and static websites, it´s a _bummer_.
 
 Firstly, run the classic `npm install` to install dependencies.
 
-*TODO*
+You will also need to create the file `env/sls.env.json`, following this structure:
 
-## Usage (if applicable)
+```json
+{
+  "dev": {
+    "SERVICES": [
+      "PROVIDER:ACCESS_ID:ACCESS_KEY",
+      "PROVIDER:ACCESS_ID:ACCESS_KEY"
+    ]
+  }
+}
+```
+
+It can contains as many values as you want (like for different stages of development).
+
+The `PROVIDER` value is the service to connect, like `github` ; `ACCESS_ID` is the *public* access id given by the service ; `ACCESS_KEY` is the *private* access key given by the service.
+
+### Supported providers
+
+- [x] `github`
+- [ ] `linkedin`
+- [ ] `google`
+- [ ] `facebook`
+
+## Usage
+
+Run `npm run build` to build the code, or `npm run work` to watch the changes and rebuild.
+
+Run `npm run dev` to create a local host serving the lambda, on port `6060`.
+
+### Deployment
 
 *TODO*
 
