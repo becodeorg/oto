@@ -13,10 +13,6 @@ import {parse as parseqs} from "qs";
 
 import providers from "./providers";
 
-const services = (process.env.SERVICES || "")
-    .split(",")
-    .map(service => service.split(":"));
-
 const app = new Koa();
 
 app.use(async (ctx, next) => {
@@ -35,23 +31,22 @@ app.use(async ctx => {
     const {redirect_uri, state} = parseqs(query);
     const [, service, client, code] = pathname.split("/");
 
-    const credentials = services.find(
-        ([provider, key]) => provider === service && key === client,
-    );
+    const secret = process.env[`${service}_${client}`];
 
-    if (!credentials) {
-        ctx.throw(500, `Client ID "${client}" isn't configured!`);
+    if (!secret) {
+        ctx.throw(
+            500,
+            `Client ID "${client}" for service "${secret}" isn't configured!`,
+        );
     }
 
-    const [provider, key, secret] = credentials;
-
-    if (!providers[provider]) {
-        ctx.throw(500, `Unknown provider "${provider}"`);
+    if (!providers[service]) {
+        ctx.throw(500, `Unknown provider "${service}"`);
     }
 
     try {
-        ctx.body = await providers[provider](
-            key,
+        ctx.body = await providers[service](
+            client,
             secret,
             code,
             redirect_uri,
