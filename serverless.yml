@@ -1,4 +1,4 @@
-service: becode-oto
+service: oto
 
 provider:
   name: aws
@@ -16,9 +16,5 @@ functions:
   gh-secret-handler:
     handler: bin/oto.handler
     events:
-      - http:
-          path: /
-          method: GET
-      - http:
-          path: /{proxy+}
-          method: GET
+      - http: GET /
+      - http: 'GET {proxy+}'
