@@ -1,0 +1,24 @@
+service: becode-oto
+
+provider:
+  name: aws
+  region: eu-west-1
+  stage: ${opt:stage, "dev"}
+  runtime: nodejs10.x
+  memorySize: 128
+  timeout: 15
+  environment: ${file(./env/sls.env.json):${opt:stage,"dev"}}
+
+plugins:
+  - serverless-offline
+
+functions:
+  gh-secret-handler:
+    handler: bin/oto.handler
+    events:
+      - http:
+          path: /
+          method: GET
+      - http:
+          path: /{proxy+}
+          method: GET
