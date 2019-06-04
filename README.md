@@ -23,17 +23,25 @@ You will also need to create the file `env/sls.env.json`, following this structu
 ```json
 {
   "dev": {
-    "SERVICES": [
-      "PROVIDER:ACCESS_ID:ACCESS_KEY",
-      "PROVIDER:ACCESS_ID:ACCESS_KEY"
-    ]
+    "PROVIDER_ACCESSID": "ACCESSKEY",
+    "PROVIDER_ACCESSID": "ACCESSKEY"
   }
 }
 ```
 
 It can contains as many values as you want (like for different stages of development).
 
-The `PROVIDER` value is the service to connect, like `github` ; `ACCESS_ID` is the *public* access id given by the service ; `ACCESS_KEY` is the *private* access key given by the service.
+The `PROVIDER` value is the service to connect, like `github` ; `ACCESSID` is the *public* access id given by the service ; `ACCESSKEY` is the *private* access key given by the service.
+
+Example:
+
+```json
+{
+  "dev": {
+    "github_xxxxxx": "xyzxyzxyzxyz"
+  }
+}
+```
 
 ### Supported providers
 
