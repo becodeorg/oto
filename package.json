@@ -1,0 +1,64 @@
+{
+  "name": "@becode/oto",
+  "version": "0.0.1",
+  "description": "Oto, the man in the middle - OAuth2 middleware lambda",
+  "private": true,
+  "scripts": {
+    "lint": "npx eslint --fix --cache src",
+    "sls:offline": "npx serverless offline start",
+    "build": "npx babel src --out-dir bin",
+    "watch": "npx babel src -w --out-dir bin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/becodeorg/oto.git"
+  },
+  "author": "leny <leny@becode.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/becodeorg/oto/issues"
+  },
+  "homepage": "https://github.com/becodeorg/oto#readme",
+  "lint-staged": {
+    "*.yml": [
+      "npx prettier --write",
+      "git add"
+    ],
+    "*.json": [
+      "npx prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "npx eslint --fix --cache",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@becode/eslint-config": "^0.4.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-unicorn": "^8.0.2",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
+    "serverless": "^1.42.3",
+    "serverless-offline": "^4.10.3"
+  },
+  "dependencies": {
+    "got": "^9.6.0",
+    "koa": "^2.7.0",
+    "parseurl": "^1.3.3",
+    "qs": "^6.7.0",
+    "serverless-http": "^2.0.2"
+  }
+}
