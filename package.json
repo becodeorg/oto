@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "lint": "npx eslint --fix --cache src",
-    "sls:offline": "npx serverless offline start",
+    "dev": "npx serverless offline --port 6060 start",
     "build": "npx babel src --out-dir bin",
-    "watch": "npx babel src -w --out-dir bin"
+    "work": "npx babel src -w --out-dir bin"
   },
   "repository": {
     "type": "git",
