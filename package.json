@@ -51,7 +51,7 @@
     "eslint-plugin-unicorn": "^9.0.0",
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
-    "prettier": "^1.17.1",
+    "prettier": "^1.18.0",
     "serverless": "^1.42.3",
     "serverless-offline": "^5.0.1"
   },
