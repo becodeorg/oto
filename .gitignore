@@ -15,3 +15,4 @@ env/*.yml
 # build targets
 bin
 
+.serverless
