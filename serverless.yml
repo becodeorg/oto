@@ -1,5 +1,10 @@
 service: oto
 
+package:
+  exclude:
+    - src/**
+    - README.md
+
 provider:
   name: aws
   region: eu-west-1
@@ -11,10 +16,27 @@ provider:
 
 plugins:
   - serverless-offline
+  - serverless-domain-manager
+
+custom:
+  stages:
+    dev:
+      domain: oto-dev.becode.xyz
+      domainEnabled: true
+    production:
+      domain: oto.becode.xyz
+      domainEnabled: true
+  customDomain:
+    domainName: ${self:custom.stages.${self:provider.stage}.domain}
+    certificateName: "*.becode.xyz"
+    basePath: ""
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+    enabled: ${self:custom.stages.${self:provider.stage}.domainEnabled}
 
 functions:
   gh-secret-handler:
     handler: bin/oto.handler
     events:
       - http: GET /
-      - http: 'GET {proxy+}'
+      - http: "GET {proxy+}"

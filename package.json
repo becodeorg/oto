@@ -1,13 +1,15 @@
 {
   "name": "@becode/oto",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Oto, the man in the middle - OAuth2 middleware lambda",
   "private": true,
   "scripts": {
     "lint": "npx eslint --fix --cache src",
     "dev": "npx serverless offline --port 6060 start",
     "build": "npx babel src --out-dir bin",
-    "work": "npx babel src -w --out-dir bin"
+    "work": "npx babel src -w --out-dir bin",
+    "deploy:dev": "npx sls deploy",
+    "deploy:prod": "npx sls deploy --stage=production"
   },
   "repository": {
     "type": "git",
@@ -53,6 +55,7 @@
     "lint-staged": "^8.1.7",
     "prettier": "^1.17.1",
     "serverless": "^1.42.3",
+    "serverless-domain-manager": "^3.2.2",
     "serverless-offline": "^5.0.1"
   },
   "dependencies": {
