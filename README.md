@@ -1,9 +1,6 @@
 # BeCode: oto
+
 > ⚙️ Oto, the man in the middle - OAuth2 middleware lambda
-
-* * *
-
-> ⚠️ **NOTE:** this project is a _work in progress_. Be patient.
 
 * * *
 
@@ -58,7 +55,20 @@ Run `npm run dev` to create a local host serving the lambda, on port `6060`.
 
 ### Deployment
 
-*TODO*
+You need to have [setup](https://serverless.com/framework/docs/providers/aws/guide/credentials/) the appropriate user from AWS and stored it in your `~/.aws/credentials`.
+
+#### Dev deployment
+
+	npm run deploy:dev --aws-profile=<your-aws-profile>
+
+#### Production deployment
+
+	npm run deploy:prod --aws-profile=<your-aws-profile>
+	
+* * * 
+
+> 🤟 You are working on a project for BeCode and want to use **oto**?  
+> Contact **@leny** on Ryver to inject your app's credentials and use our instances!
 
 * * *
 
