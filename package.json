@@ -52,7 +52,7 @@
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-unicorn": "^9.0.0",
     "husky": "^2.4.0",
-    "lint-staged": "^8.1.7",
+    "lint-staged": "^8.2.0",
     "prettier": "^1.18.1",
     "serverless": "^1.42.3",
     "serverless-domain-manager": "^3.2.2",
