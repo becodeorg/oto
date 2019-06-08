@@ -8,6 +8,7 @@
 
 import sls from "serverless-http";
 import Koa from "koa";
+import cors from "koa2-cors";
 import parseurl from "parseurl";
 import {parse as parseqs} from "qs";
 
@@ -25,6 +26,13 @@ app.use(async (ctx, next) => {
         };
     }
 });
+
+app.use(
+    cors({
+        origin: "*",
+        allowMethods: ["GET", "HEAD", "OPTIONS"],
+    }),
+);
 
 app.use(async ctx => {
     const {pathname, query} = parseurl(ctx.req);
