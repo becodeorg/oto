@@ -55,7 +55,7 @@
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
     "serverless": "^1.45.1",
-    "serverless-domain-manager": "^3.2.2",
+    "serverless-domain-manager": "^3.2.6",
     "serverless-offline": "^5.4.4"
   },
   "dependencies": {
