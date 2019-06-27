@@ -7,7 +7,9 @@
  */
 
 import github from "./github";
+import linkedin from "./linkedin";
 
 export default {
     github,
+    linkedin,
 };
