@@ -54,7 +54,7 @@
     "husky": "^2.7.0",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
-    "serverless": "^1.46.0",
+    "serverless": "^1.46.1",
     "serverless-domain-manager": "^3.2.6",
     "serverless-offline": "^5.5.0"
   },
