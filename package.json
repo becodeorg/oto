@@ -59,6 +59,7 @@
     "serverless-offline": "^5.8.0"
   },
   "dependencies": {
+    "@sentry/node": "^5.5.0",
     "got": "^9.6.0",
     "koa": "^2.7.0",
     "koa2-cors": "^2.0.6",

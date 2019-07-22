@@ -11,8 +11,17 @@ import Koa from "koa";
 import cors from "koa2-cors";
 import parseurl from "parseurl";
 import {parse as parseqs} from "qs";
+import * as Sentry from "@sentry/node";
 
 import providers from "./providers";
+
+const {AWS_LAMBDA_FUNCTION_NAME, SENTRY_DSN, IS_OFFLINE = false} = process.env;
+
+const STAGE = AWS_LAMBDA_FUNCTION_NAME.includes("production") ? "prod" : "dev";
+
+if (SENTRY_DSN && !IS_OFFLINE) {
+    Sentry.init({dsn: SENTRY_DSN, environment: STAGE});
+}
 
 const app = new Koa();
 
@@ -20,6 +29,15 @@ app.use(async (ctx, next) => {
     try {
         await next();
     } catch (err) {
+        if (SENTRY_DSN && !IS_OFFLINE) {
+            Sentry.withScope(scope => {
+                scope.addEventProcessor(event =>
+                    Sentry.Handlers.parseRequest(event, ctx.request),
+                );
+                Sentry.captureException(err);
+            });
+            await Sentry.flush(2000);
+        }
         ctx.status = err.status || 500;
         ctx.body = {
             message: err.message,
@@ -53,6 +71,7 @@ app.use(async ctx => {
     }
 
     try {
+        // eslint-disable-next-line require-atomic-updates
         ctx.body = await providers[service](
             client,
             secret,
