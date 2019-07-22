@@ -20,14 +20,10 @@ export default async (key, secret, code, redirect_uri) => {
         form: true,
     };
 
-    console.log(opts);
-
     const {error, body} = await post(
         `https://www.linkedin.com/oauth/v2/accessToken`,
         opts,
     );
-
-    console.log(error, body);
 
     if (error) {
         throw new Error(error);
