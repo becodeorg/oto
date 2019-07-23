@@ -17,7 +17,11 @@ import providers from "./providers";
 
 const {AWS_LAMBDA_FUNCTION_NAME, SENTRY_DSN, IS_OFFLINE = false} = process.env;
 
-const STAGE = AWS_LAMBDA_FUNCTION_NAME.includes("production") ? "prod" : "dev";
+const STAGE = IS_OFFLINE
+    ? "dev"
+    : AWS_LAMBDA_FUNCTION_NAME.includes("production")
+    ? "prod"
+    : "dev";
 
 if (SENTRY_DSN && !IS_OFFLINE) {
     Sentry.init({dsn: SENTRY_DSN, environment: STAGE});
