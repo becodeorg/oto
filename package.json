@@ -44,7 +44,7 @@
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
     "@babel/polyfill": "^7.6.0",
-    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
     "@becode/eslint-config": "^0.7.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.5.1",
