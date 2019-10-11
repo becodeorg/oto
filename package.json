@@ -8,8 +8,7 @@
     "dev": "npx serverless offline --port 6060 start",
     "build": "npx babel src --out-dir bin",
     "work": "npx babel src -w --out-dir bin",
-    "deploy:dev": "npx sls deploy",
-    "deploy:prod": "npx sls deploy --stage=production"
+    "deploy:dev": "npx sls deploy"
   },
   "repository": {
     "type": "git",
@@ -54,6 +53,7 @@
     "husky": "^3.0.8",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
     "serverless": "^1.54.0",
     "serverless-domain-manager": "^3.3.0",
     "serverless-offline": "^5.12.0"
