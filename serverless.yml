@@ -2,6 +2,7 @@ service: oto
 
 package:
   exclude:
+    - env/**
     - src/**
     - README.md
 
