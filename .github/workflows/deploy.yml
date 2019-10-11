@@ -1,0 +1,57 @@
+# becodeorg/oto
+#
+# /.github/workflows/deploy.yml - Deploy workflow
+#
+# coded by leny@BeCode
+# started at 11/10/2019
+
+name: Build & deploy (staging)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Install dependencies
+        run: npm ci
+        env:
+          ADBLOCK: true
+          CI: true
+          DISABLE_OPENCOLLECTIVE: true
+      - name: Prepare env file
+        run: echo '${{ secrets.SERVICES_CONFIGURATION }}' > ./env/sls.env.json
+      - name: Build
+        run: npx babel src --out-dir bin
+      - name: Sentry - create release
+        run: ./node_modules/.bin/sentry-cli --auth-token=${{ secrets.SENTRY_TOKEN }} releases --org=${{ secrets.SENTRY_ORG }} --project=${{ secrets.SENTRY_PROJECT }} new $(node ./scripts/get-release-name.js)
+      - name: Sentry - associate commits
+        run: ./node_modules/.bin/sentry-cli --auth-token=${{ secrets.SENTRY_TOKEN }} releases --org=${{ secrets.SENTRY_ORG }} --project=${{ secrets.SENTRY_PROJECT }} set-commits --auto $(node ./scripts/get-release-name.js)
+      - name: Sentry - upload sourcemaps
+        run: ./node_modules/.bin/sentry-cli --auth-token=${{ secrets.SENTRY_TOKEN }} releases --org=${{ secrets.SENTRY_ORG }} --project=${{ secrets.SENTRY_PROJECT }} files $(node ./scripts/get-release-name.js) upload-sourcemaps ./bin --url-prefix=~/
+      - name: Clean artifacts sourcemaps
+        run: node ./scripts/clean-sourcemaps.js
+      - name: Serverless deploy (dev)
+        uses: serverless/github-action@master
+        with:
+          args: deploy --stage=dev --verbose
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Serverless deploy (prod)
+        uses: serverless/github-action@master
+        with:
+          args: deploy --stage=production --verbose
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Sentry - broadcast deploy
+        run: ./node_modules/.bin/sentry-cli --auth-token=${{ secrets.SENTRY_TOKEN }} releases --org=${{ secrets.SENTRY_ORG }} --project=${{ secrets.SENTRY_PROJECT }} deploys $(node ./scripts/get-release-name.js) new -e production
