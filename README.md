@@ -11,7 +11,7 @@ In a world full of PWA and static websites, it´s a _bummer_.
 
 **oto** is a small middleware, a lambda serverless function, which only role is to serve as the server in a OAuth2 transaction.
 
-[Read the medium article](https://medium.com/@leny_be/introducing-oto-the-man-in-the-middle-581311962a6d) introducing oto & its purpose.
+[Read the **dev.to** article](https://dev.to/leny/introducing-oto-the-man-in-the-middle-52go) introducing oto & its purpose.
 
 ## Installation
 
@@ -45,7 +45,7 @@ Example:
 ### Supported providers
 
 - [x] `github`
-- [ ] `linkedin`
+- [x] `linkedin`
 - [ ] `google`
 - [ ] `facebook`
 
