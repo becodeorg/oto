@@ -55,7 +55,7 @@
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
-    "serverless": "^1.55.1",
+    "serverless": "^1.56.1",
     "serverless-domain-manager": "^3.3.0",
     "serverless-offline": "^5.12.0"
   },
