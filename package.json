@@ -42,7 +42,7 @@
   "devDependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
-    "@babel/polyfill": "^7.6.0",
+    "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.7",
     "@becode/eslint-config": "^0.8.2",
     "@sentry/cli": "^1.49.0",
