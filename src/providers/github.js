@@ -10,19 +10,18 @@ import {post} from "got";
 
 export default async (key, secret, code, redirect_uri, state) => {
     const opts = {
-        body: {
+        json: {
             client_id: key,
             client_secret: secret,
             code,
         },
-        json: true,
     };
 
     if (redirect_uri) {
-        opts.body.redirect_uri = redirect_uri;
+        opts.json.redirect_uri = redirect_uri;
     }
     if (state) {
-        opts.body.state = state;
+        opts.json.state = state;
     }
 
     const {error, body} = await post(
