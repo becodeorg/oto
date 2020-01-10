@@ -1,6 +1,6 @@
 {
   "name": "@becode/oto",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Oto, the man in the middle - OAuth2 middleware lambda",
   "private": true,
   "scripts": {
