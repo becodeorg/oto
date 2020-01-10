@@ -17,6 +17,7 @@ export default async (key, secret, code, redirect_uri) => {
             redirect_uri,
             grant_type: "authorization_code",
         },
+        responseType: "json",
     };
 
     const {error, body} = await post(

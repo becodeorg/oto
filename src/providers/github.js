@@ -15,6 +15,7 @@ export default async (key, secret, code, redirect_uri, state) => {
             client_secret: secret,
             code,
         },
+        responseType: "json",
     };
 
     if (redirect_uri) {
