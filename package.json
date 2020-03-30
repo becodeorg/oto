@@ -60,7 +60,7 @@
     "serverless-offline": "^6.1.2"
   },
   "dependencies": {
-    "@sentry/node": "^5.15.2",
+    "@sentry/node": "^5.15.4",
     "got": "^10.7.0",
     "koa": "^2.11.0",
     "koa2-cors": "^2.0.6",
