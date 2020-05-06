@@ -57,7 +57,7 @@
     "rimraf": "^3.0.2",
     "serverless": "^1.69.0",
     "serverless-domain-manager": "^3.3.2",
-    "serverless-offline": "^6.1.4"
+    "serverless-offline": "^6.1.5"
   },
   "dependencies": {
     "@sentry/node": "^5.15.5",
