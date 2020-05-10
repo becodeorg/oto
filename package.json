@@ -22,16 +22,13 @@
   "homepage": "https://github.com/becodeorg/oto#readme",
   "lint-staged": {
     "*.yml": [
-      "npx prettier --write",
-      "git add"
+      "npx prettier --write"
     ],
     "*.json": [
-      "npx prettier --write",
-      "git add"
+      "npx prettier --write"
     ],
     "*.js": [
-      "npx eslint --fix --cache",
-      "git add"
+      "npx eslint --fix --cache"
     ]
   },
   "husky": {
