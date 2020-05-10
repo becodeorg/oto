@@ -8,8 +8,10 @@
 
 import github from "./github";
 import linkedin from "./linkedin";
+import discord from "./discord";
 
 export default {
     github,
     linkedin,
+    discord,
 };

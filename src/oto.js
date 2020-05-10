@@ -58,7 +58,7 @@ app.use(
 
 app.use(async ctx => {
     const {pathname, query} = parseurl(ctx.req);
-    const {redirect_uri, state} = parseqs(query);
+    const {redirect_uri, state, scope} = parseqs(query);
     const [, service, client, code] = pathname.split("/");
 
     const secret = process.env[`${service}_${client}`];
@@ -82,6 +82,7 @@ app.use(async ctx => {
             code,
             redirect_uri,
             state,
+            scope,
         );
     } catch (err) {
         ctx.throw(500, err);
