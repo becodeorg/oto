@@ -21,15 +21,12 @@ plugins:
 
 custom:
   stages:
-    dev:
-      domain: oto-dev.becode.xyz
-      domainEnabled: true
     production:
-      domain: oto.becode.xyz
+      domain: oto.becode.org
       domainEnabled: true
   customDomain:
     domainName: ${self:custom.stages.${self:provider.stage}.domain}
-    certificateName: "*.becode.xyz"
+    certificateName: "*.becode.org"
     basePath: ""
     stage: ${self:provider.stage}
     createRoute53Record: true

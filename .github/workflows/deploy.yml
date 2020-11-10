@@ -39,13 +39,6 @@ jobs:
         run: ./node_modules/.bin/sentry-cli --auth-token=${{ secrets.SENTRY_TOKEN }} releases --org=${{ secrets.SENTRY_ORG }} --project=${{ secrets.SENTRY_PROJECT }} files $(node ./scripts/get-release-name.js) upload-sourcemaps ./bin --url-prefix=~/
       - name: Clean artifacts sourcemaps
         run: node ./scripts/clean-sourcemaps.js
-      - name: Serverless deploy (dev)
-        uses: serverless/github-action@master
-        with:
-          args: deploy --stage=dev --verbose
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Serverless deploy (prod)
         uses: serverless/github-action@master
         with:
