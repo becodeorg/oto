@@ -69,7 +69,7 @@ You need to have [setup](https://serverless.com/framework/docs/providers/aws/gui
 * * * 
 
 > 🤟 You are working on a project for BeCode and want to use **oto**?  
-> Contact **[My Becode Team](my@becode.org)** via email to inject your app's credentials and use our instances!
+> Contact **My Becode Team** `my@becode.org` via email to inject your app's credentials and use our instances!
 
 * * *
 
